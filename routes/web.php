@@ -25,4 +25,4 @@ Route::resource("users",UserController::class);
 Route::resource("dashboard",BoardController::class);
 
 
-Route::get('users/pdf', [UserController::class, 'createPDF']);
+Route::get('users/pdf', [BoardController::class, 'createPDF']);

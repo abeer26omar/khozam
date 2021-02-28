@@ -158,7 +158,7 @@
       <div class="card">
         <div class="card-header border-0">
            <div class="float-left"> <span>Recent Users</span> </div> 
-           <div class="float-right"><a class="btn btn-outline-info" href="{{ URL::to('/users/pdf') }}">Export to pdf </a></div>  
+           <div class="float-right"><a class="btn btn-outline-info" href="{{ URL::to('users/pdf') }}">Export to pdf </a></div>  
 
         </div>      
            <div class="card-action">

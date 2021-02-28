@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use DB;
+use PDF;
 
 class BoardController extends Controller
 {
@@ -21,6 +22,16 @@ class BoardController extends Controller
 
         return view("dashboard",["users"=>$users],compact('counter'));
     }
+    // Generate PDF
+    public function createPDF() {
+        // retreive all records from db
+        $data = User::all();
+        $pdf = PDF::loadView('dashboard',compact('data'));
+
+        // download PDF file with download method
+        return $pdf->download('users.pdf');
+      }
+
 
     /**
      * Show the form for creating a new resource.

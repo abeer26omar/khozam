@@ -23,19 +23,7 @@ class UserController extends Controller
        
        
     }
-    // Generate PDF
-    public function createPDF() {
-        // retreive all records from db
-        $data = User::all();
-  
-        // share data to view
-        view()->share('users',$data);
-        $pdf = PDF::loadView('pdf_view', $data);
-  
-        // download PDF file with download method
-        // return $pdf->download('pdf_file.pdf');
-      }
-
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -58,13 +46,13 @@ class UserController extends Controller
         $request->validate([
             'your-Name' => 'required',
             'your-Phone' => 'required|numeric',
-            'your-email' => 'required',
+            'your-email' => 'required|email|unique:users',
             'select-project'=>'required',
         ]);
-        if($request->fails())
-        {
-            return view('index');
-        }
+        // if($request->fails())
+        // {
+        //     return view('index');
+        // }
         User::create([
              "name"=>$request["your-Name"],
              "mobile"=>$request["your-Phone"],
